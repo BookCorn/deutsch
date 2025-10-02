@@ -1,3 +1,9 @@
+---
+title: "Adjektivdeklination 形容词变格"
+slug: adjektivdeklination-形容词变格
+draft: false
+---
+
 <!-- source: https://www.notion.so/Adjektivdeklination-166f21c3ea5380e59527fdf9629029f5 -->
 
 # Adjektivdeklination 形容词变格

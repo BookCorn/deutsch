@@ -1,3 +1,9 @@
+---
+title: "Schwach dekliniertes Maskulinum 阳性弱变化名词"
+slug: schwach-dekliniertes-maskulinum-阳性弱变化名词
+draft: false
+---
+
 <!-- source: https://www.notion.so/Schwach-dekliniertes-Maskulinum-1d8f21c3ea5380ea87f0c0f7b8fe7750 -->
 
 # Schwach dekliniertes Maskulinum 阳性弱变化名词

@@ -1,0 +1,9 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# Local Hugo caches
+.hugo_build.lock
+
+# Node/yarn caches if theme uses them
+node_modules/

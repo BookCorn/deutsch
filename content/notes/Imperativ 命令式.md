@@ -1,3 +1,9 @@
+---
+title: "Imperativ 命令式"
+slug: imperativ-命令式
+draft: false
+---
+
 <!-- source: https://www.notion.so/Imperativ-904633f18e81404ca8af098c661e3c3f -->
 
 # Imperativ 命令式

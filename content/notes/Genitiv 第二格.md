@@ -1,3 +1,9 @@
+---
+title: "*Genitiv 第二格"
+slug: genitiv-第二格
+draft: false
+---
+
 <!-- source: https://www.notion.so/Genitiv-1fbf21c3ea5380e0a572ca96cc9795f8 -->
 
 # *Genitiv 第二格

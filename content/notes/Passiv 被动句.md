@@ -1,3 +1,9 @@
+---
+title: "Passiv 被动句"
+slug: passiv-被动句
+draft: false
+---
+
 <!-- source: https://www.notion.so/Passiv-1eaf21c3ea5380fea48fc34f0cebcecb -->
 
 # Passiv 被动句

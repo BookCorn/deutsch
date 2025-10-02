@@ -1,3 +1,9 @@
+---
+title: "Stellung von Dativ und Akkusativ Objekt 第三、四格宾语位置"
+slug: stellung-von-dativ-und-akkusativ-objekt-第三-四格宾语位置
+draft: false
+---
+
 <!-- source: https://www.notion.so/Stellung-von-Dativ-und-Akkusativ-Objekt-1b6f21c3ea5380889d28e8e5a5e04097 -->
 
 # Stellung von Dativ und Akkusativ Objekt 第三、四格宾语位置

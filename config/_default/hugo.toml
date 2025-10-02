@@ -1,0 +1,16 @@
+baseURL = "https://bookcorn.github.io/deutsch/"
+languageCode = "zh-cn"
+title = "德语语法笔记"
+theme = "ananke"
+defaultContentLanguage = "zh"
+enableRobotsTXT = true
+
+# Allow raw HTML in Markdown tables exported from Notion
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  author = "rechtan"
+  description = "德语语法学习笔记"

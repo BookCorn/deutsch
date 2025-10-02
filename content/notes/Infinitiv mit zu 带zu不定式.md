@@ -1,3 +1,9 @@
+---
+title: "Infinitiv mit zu 带zu不定式"
+slug: infinitiv-mit-zu-带zu不定式
+draft: false
+---
+
 <!-- source: https://www.notion.so/Infinitiv-mit-zu-zu-210f21c3ea53806ea6ccc93685ccf7bc -->
 
 # Infinitiv mit zu 带zu不定式

@@ -1,3 +1,9 @@
+---
+title: "Grammatik"
+slug: grammatik
+draft: false
+---
+
 <!-- source: https://www.notion.so/Grammatik-140f21c3ea5380a4a948ca19e07412bd -->
 
 # Grammatik
