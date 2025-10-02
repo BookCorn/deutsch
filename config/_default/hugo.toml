@@ -1,7 +1,7 @@
 baseURL = "https://bookcorn.github.io/deutsch/"
 languageCode = "zh-cn"
 title = "德语语法笔记"
-theme = "ananke"
+theme = ["hugo-book", "typo"]
 defaultContentLanguage = "zh"
 enableRobotsTXT = true
 
@@ -14,3 +14,21 @@ enableRobotsTXT = true
 [params]
   author = "rechtan"
   description = "德语语法学习笔记"
+  BookSection = "grammatik"
+  BookTheme = "auto"
+  BookToC = true
+  paginationSize = 10
+
+[params.breadcrumbs]
+  enabled = true
+
+[menu]
+  [[menu.home]]
+    name = "语法"
+    pageRef = "/grammatik/"
+    weight = 1
+
+  [[menu.after]]
+    name = "Notiz B1"
+    pageRef = "/notiz_b1/"
+    weight = 10
