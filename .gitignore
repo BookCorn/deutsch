@@ -7,3 +7,4 @@
 
 # Node/yarn caches if theme uses them
 node_modules/
+.DS_Store
