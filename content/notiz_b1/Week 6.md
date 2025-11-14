@@ -3,6 +3,7 @@ title: "Week 6"
 slug: week-6
 draft: false
 type: notiz_b1
+math: true
 ---
 
 # Week 6
@@ -82,7 +83,7 @@ type: notiz_b1
 
 - Wenn das Wetter gut wäre, würde ich spazieren gehen. 如果天气好，我会去散步。
 - Wenn wir Deutsch sehr gut sprechen würden, könnten wir überall mitreden. 如果我们德语说得很好，我们就能在各处参与讨论。
-提示：常见礼貌/愿望用法：würde + Infinitiv；hätte/ wäre；könnte。
+  提示：常见礼貌/愿望用法：würde + Infinitiv；hätte/ wäre；könnte。
 
 ### 礼貌请求与时间安排（Konjunktiv II）
 
