@@ -107,3 +107,7 @@ type: notiz_b1
 - zu-Infinitiv与态度名词搭配：Lust / Zeit / Angst / Wunsch + zu + Infinitiv。
 - 比较级：wichtiger als …（A 比 B 更重要）。
 - 观点句型：Meiner Meinung nach … / Ich bin anderer Meinung. 搭配 glauben/finden/meinen/denken + dass-从句更自然。
+
+# LaTex test:
+
+$$\text{(i) }f(x,y)=x^4y+3, B=\{(x,y) | -1 \leq x \leq 1, x^2 \leq y \leq 1 \} \\ \text{(ii) }f(x,y)=1, B=\{(x,y) | |x| + ||y  \leq 1 \}$$
