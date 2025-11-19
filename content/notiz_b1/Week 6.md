@@ -111,4 +111,6 @@ math: true
 
 # LaTex test:
 
-$$\text{(i) }f(x,y)=x^4y+3, B=\{(x,y) | -1 \leq x \leq 1, x^2 \leq y \leq 1 \} \\ \text{(ii) }f(x,y)=1, B=\{(x,y) | |x| + ||y  \leq 1 \}$$
+$$
+\text{(i) }f(x,y)=x^4y+3, B=\{(x,y) | -1 \leq x \leq 1, x^2 \leq y \leq 1 \} \\ \text{(ii) }f(x,y)=1, B=\{(x,y) | |x| + ||y  \leq 1 \}
+$$

@@ -1,4 +1,4 @@
-baseURL = "https://bookcorn.github.io/deutsch/"
+baseURL = "https://deutsch-esc.pages.dev/"
 languageCode = "zh-cn"
 title = "德语语法笔记"
 theme = ["hugo-book", "typo"]
