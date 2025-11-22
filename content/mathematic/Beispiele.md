@@ -7,15 +7,13 @@ math: true
 
 # 1.求解$y'=Ay$齐次线性方程(homogene lineare System von DGLn)
 
-{{
-<rawhtml>
+{{<rawhtml>}}
 
 $$
 \mathbf{A}=\begin{pmatrix} 0 & -4 & 4 \\ 0 & 2 & 0 \\ -2 & -4 & 6 \end{pmatrix}
 $$
 
-<\rawhtml>
-}}
+{{<\rawhtml>}}
 
 $$
 y_1'= -4y_2 + 4y_3 \\
@@ -30,16 +28,16 @@ $$
 $$
 
 Einheitmatrix 单位矩阵 $E$
-{{
-<rawhtml>
+{{<rawhtml>}}
 
 $$
 E=\begin{pmatrix}1 & & \\ & 1 & \\  & & 1 \end{pmatrix} \\
 \lambda E=\begin{pmatrix}\lambda & & \\ & \lambda & \\  & & \lambda \end{pmatrix}
 $$
 
-<\rawhtml>
-}}
+{{<\rawhtml>}}
+
+{{<rawhtml>}}
 
 $$
 A-\lambda E= \\
@@ -47,18 +45,27 @@ A-\lambda E= \\
 \lambda_1=\lambda_2=2,\lambda_3=4
 $$
 
+{{<\rawhtml>}}
+
 Eigentvector 特征向量$\vec v$
 
 当$\lambda=\lambda_1=\lambda_2=2$（二重根）
+
+{{<rawhtml>}}
 
 $$
 A-2E=\begin{pmatrix} -2 & -4 & 4 \\ 0 & 0 & 0 \\ -2 & -4 & 4 \end{pmatrix}
 $$
 
+{{<\rawhtml>}}
+
+{{<rawhtml>}}
+
 $$
 (A-2E)\vec v=\begin{pmatrix} -2 & -4 & 4 \\ 0 & 0 & 0 \\ -2 & -4 & 4 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}=\vec 0
 $$
 
+{{<\rawhtml>}}
 化简得：
 
 $$
@@ -67,39 +74,48 @@ $$
 
 特征空间维数为 2，可以找到两个线性无关的特征向量：
 
-取 $v_2=1, v_3=0$：$v_1=-2$，得 $\vec v_1=\begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$
+取 $v_2=1, v_3=0$：$v_1=-2$，得 {{<rawhtml>}}$\vec v_1=\begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$ {{<\rawhtml>}}
 
-取 $v_2=0, v_3=1$：$v_1=2$，得 $\vec v_2=\begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}$
+取 $v_2=0, v_3=1$：$v_1=2$，得 {{<rawhtml>}}$\vec v_2=\begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}${{<\rawhtml>}}
 
 ---
 
 当$\lambda=\lambda_3=4$
+{{<rawhtml>}}
 
 $$
 A-4E=\begin{pmatrix} -4 & -4 & 4 \\ 0 & -2 & 0 \\ -2 & -4 & 2 \end{pmatrix}
 $$
 
+{{<\rawhtml>}}
+
+{{<rawhtml>}}
+
 $$
 (A-4E)\vec v=\begin{pmatrix} -4 & -4 & 4 \\ 0 & -2 & 0 \\ -2 & -4 & 2 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}=\vec 0
 $$
 
+{{<\rawhtml>}}
 从第二行：$-2v_2=0 \Rightarrow v_2=0$
 
 从第一行：$-4v_1-4v_2+4v_3=0 \Rightarrow v_1=v_3$
 
-得特征向量 $\vec v_3=\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
+得特征向量{{<rawhtml>}} $\vec v_3=\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}${{<\rawhtml>}}
 
 ---
 
 ## 通解 (Allgemeine Lösung)
 
 齐次线性方程组 $y'=Ay$ 的通解为：
+{{<rawhtml>}}
 
 $$
 \vec y(t)=c_1 e^{2t}\begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}+c_2 e^{2t}\begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}+c_3 e^{4t}\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
 $$
 
+{{<\rawhtml>}}
 或写成分量形式：
+{{<rawhtml>}}
 
 $$
 \begin{cases}
@@ -109,6 +125,7 @@ y_3(t)=c_2e^{2t}+c_3e^{4t}
 \end{cases}
 $$
 
+{{<\rawhtml>}}
 其中 $c_1, c_2, c_3 \in \mathbb{R}$ 为任意常数。
 
 ---
