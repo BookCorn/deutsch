@@ -40,11 +40,16 @@ $$
 {{<rawhtml>}}
 
 $$
-A-\lambda E= \\
+A-\lambda E=\begin{pmatrix}  -\lambda & -4 & 4 \\ 0 & 2-\lambda & 0 \\ -2 & -4 & 6-\lambda \end{pmatrix}
+$$
+
+{{</rawhtml>}}
+
+{{<rawhtml>}}
+$$
 \det (A-\lambda E)=\begin{vmatrix} -\lambda & -4 & 4 \\ 0 & 2-\lambda & 0 \\ -2 & -4 & 6-\lambda \end{vmatrix} =(2-\lambda)(\lambda-2)(\lambda-4)=0 \\
 \lambda_1=\lambda_2=2,\lambda_3=4
 $$
-
 {{</rawhtml>}}
 
 Eigentvector 特征向量$\vec v$
