@@ -19,6 +19,15 @@ enableRobotsTXT = true
   BookToC = true
   paginationSize = 10
 
+  # Typo theme menu
+  [[params.menu]]
+    name = "notiz_b1"
+    url = "/notiz_b1/"
+
+  [[params.menu]]
+    name = "mathematic"
+    url = "/mathematic/"
+
 [params.breadcrumbs]
   enabled = true
 
