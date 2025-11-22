@@ -7,11 +7,15 @@ math: true
 
 # 1.求解$y'=Ay$齐次线性方程(homogene lineare System von DGLn)
 
+{{
 <rawhtml>
+
 $$
 \mathbf{A}=\begin{pmatrix} 0 & -4 & 4 \\ 0 & 2 & 0 \\ -2 & -4 & 6 \end{pmatrix}
 $$
+
 <\rawhtml>
+}}
 
 $$
 y_1'= -4y_2 + 4y_3 \\
@@ -26,6 +30,7 @@ $$
 $$
 
 Einheitmatrix 单位矩阵 $E$
+{{
 <rawhtml>
 
 $$
@@ -34,6 +39,7 @@ E=\begin{pmatrix}1 & & \\ & 1 & \\  & & 1 \end{pmatrix} \\
 $$
 
 <\rawhtml>
+}}
 
 $$
 A-\lambda E= \\
