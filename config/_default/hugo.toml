@@ -32,3 +32,8 @@ enableRobotsTXT = true
     name = "Notiz B1"
     pageRef = "/notiz_b1/"
     weight = 10
+
+  [[menu.after]]
+    name = "数学笔记"
+    pageRef = "/mathematic/"
+    weight = 20

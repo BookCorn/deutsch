@@ -1,0 +1,227 @@
+---
+title: "例题集"
+date: 2025-11-22
+summary: "数学分析例题解答"
+math: true
+---
+
+# 1.求解$y'=Ay$齐次线性方程(homogene lineare System von DGLn)
+
+
+$$
+\mathbf{A}=\begin{pmatrix} 0 & -4 & 4 \\ 0 & 2 & 0 \\ -2 & -4 & 6 \end{pmatrix}
+$$
+
+
+$$
+y_1'= -4y_2 + 4y_3 \\
+y_2'=2y_2 \\
+y_3'=-2y_1-4y_2+6y_3
+$$
+Eigentwerte 特征值 $\lambda$
+$$
+\det(A-\lambda E) = 0
+$$
+Einheitmatrix 单位矩阵 $E$
+$$
+E=\begin{pmatrix}1 & & \\ & 1 & \\  & & 1 \end{pmatrix} \\ 
+\lambda E=\begin{pmatrix}\lambda & & \\ & \lambda & \\  & & \lambda \end{pmatrix}
+$$
+
+$$
+A-\lambda E= \\
+\det (A-\lambda E)=\begin{vmatrix} -\lambda & -4 & 4 \\ 0 & 2-\lambda & 0 \\ -2 & -4 & 6-\lambda \end{vmatrix} =(2-\lambda)(\lambda-2)(\lambda-4)=0 \\
+\lambda_1=\lambda_2=2,\lambda_3=4
+$$
+
+Eigentvector 特征向量$\vec v$
+
+当$\lambda=\lambda_1=\lambda_2=2$（二重根）
+$$
+A-2E=\begin{pmatrix} -2 & -4 & 4 \\ 0 & 0 & 0 \\ -2 & -4 & 4 \end{pmatrix}
+$$
+
+$$
+(A-2E)\vec v=\begin{pmatrix} -2 & -4 & 4 \\ 0 & 0 & 0 \\ -2 & -4 & 4 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}=\vec 0
+$$
+
+化简得：
+$$
+-2v_1-4v_2+4v_3=0 \Rightarrow v_1+2v_2-2v_3=0
+$$
+
+特征空间维数为 2，可以找到两个线性无关的特征向量：
+
+取 $v_2=1, v_3=0$：$v_1=-2$，得 $\vec v_1=\begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}$
+
+取 $v_2=0, v_3=1$：$v_1=2$，得 $\vec v_2=\begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}$
+
+---
+
+当$\lambda=\lambda_3=4$
+$$
+A-4E=\begin{pmatrix} -4 & -4 & 4 \\ 0 & -2 & 0 \\ -2 & -4 & 2 \end{pmatrix}
+$$
+
+$$
+(A-4E)\vec v=\begin{pmatrix} -4 & -4 & 4 \\ 0 & -2 & 0 \\ -2 & -4 & 2 \end{pmatrix}\begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}=\vec 0
+$$
+
+从第二行：$-2v_2=0 \Rightarrow v_2=0$
+
+从第一行：$-4v_1-4v_2+4v_3=0 \Rightarrow v_1=v_3$
+
+得特征向量 $\vec v_3=\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
+
+---
+
+## 通解 (Allgemeine Lösung)
+
+齐次线性方程组 $y'=Ay$ 的通解为：
+$$
+\vec y(t)=c_1 e^{2t}\begin{pmatrix} -2 \\ 1 \\ 0 \end{pmatrix}+c_2 e^{2t}\begin{pmatrix} 2 \\ 0 \\ 1 \end{pmatrix}+c_3 e^{4t}\begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+$$
+
+或写成分量形式：
+$$
+\begin{cases}
+y_1(t)=-2c_1e^{2t}+2c_2e^{2t}+c_3e^{4t} \\
+y_2(t)=c_1e^{2t} \\
+y_3(t)=c_2e^{2t}+c_3e^{4t}
+\end{cases}
+$$
+
+其中 $c_1, c_2, c_3 \in \mathbb{R}$ 为任意常数。
+
+---
+
+## 验证 (Verifikation)
+
+可以验证：$y_2'=2y_2$ ✓
+
+对于 $y_1'=-4y_2+4y_3$：
+$$
+y_1'=-4c_1e^{2t}+4c_2e^{2t}+4c_3e^{4t}
+$$
+$$
+-4y_2+4y_3=-4c_1e^{2t}+4c_2e^{2t}+4c_3e^{4t} ✓
+$$
+
+
+
+# 2.Für die Funktion $ f: \mathbb{R}^3 \to \mathbb{R}^3 $ mit
+
+
+$$
+f(x, y, z) = \begin{pmatrix} 2x + 4xz \\ z^2 \\ 2x^2 + 2yz + 3z^2 \end{pmatrix}
+$$
+
+gibt es ein Potential $\varphi$. Im folgenden kann also von der Gültigkeit des Potentialkriteriums ausgegangen werden.
+
+---
+
+## 6.1 求势函数 $\varphi$ (Potential ermitteln)
+
+若 $f$ 为势函数 $\varphi$ 的梯度场，则：
+$$
+f = \nabla \varphi = \begin{pmatrix} \frac{\partial \varphi}{\partial x} \\ \frac{\partial \varphi}{\partial y} \\ \frac{\partial \varphi}{\partial z} \end{pmatrix}
+$$
+
+即：
+$$
+\frac{\partial \varphi}{\partial x} = 2x + 4xz \quad (1)
+$$
+$$
+\frac{\partial \varphi}{\partial y} = z^2 \quad (2)
+$$
+$$
+\frac{\partial \varphi}{\partial z} = 2x^2 + 2yz + 3z^2 \quad (3)
+$$
+
+**第一步：** 对方程 (1) 关于 $x$ 积分：
+$$
+\varphi = \int (2x + 4xz) \, dx = x^2 + 2x^2z + g(y,z)
+$$
+其中 $g(y,z)$ 是关于 $y, z$ 的待定函数。
+
+**第二步：** 利用方程 (2)：
+$$
+\frac{\partial \varphi}{\partial y} = \frac{\partial g}{\partial y} = z^2
+$$
+
+对 $y$ 积分：
+$$
+g(y,z) = \int z^2 \, dy = yz^2 + h(z)
+$$
+其中 $h(z)$ 是关于 $z$ 的待定函数。
+
+因此：
+$$
+\varphi = x^2 + 2x^2z + yz^2 + h(z)
+$$
+
+**第三步：** 利用方程 (3)：
+$$
+\frac{\partial \varphi}{\partial z} = 2x^2 + 2yz + h'(z) = 2x^2 + 2yz + 3z^2
+$$
+
+比较得：
+$$
+h'(z) = 3z^2
+$$
+
+积分得：
+$$
+h(z) = \int 3z^2 \, dz = z^3 + C
+$$
+
+取 $C = 0$，得势函数：
+$$
+\boxed{\varphi(x,y,z) = x^2 + 2x^2z + yz^2 + z^3}
+$$
+
+---
+
+## 6.2 计算曲线积分 (Kurvenintegral berechnen)
+
+由于 $f$ 是保守场（Konservatives Vektorfeld），曲线积分与路径无关，仅依赖于起点和终点：
+$$
+s = \int_C \boldsymbol{f} \cdot d\boldsymbol{s} = \varphi(Q) - \varphi(P)
+$$
+
+**计算 $\varphi(P)$：** 在点 $P(0,0,0)$
+$$
+\varphi(0,0,0) = 0^2 + 2(0)^2(0) + (0)(0)^2 + 0^3 = 0
+$$
+
+**计算 $\varphi(Q)$：** 在点 $Q(1,1,2)$
+$$
+\varphi(1,1,2) = 1^2 + 2(1)^2(2) + (1)(2)^2 + 2^3
+$$
+$$
+= 1 + 4 + 4 + 8 = 17
+$$
+
+**结果：**
+$$
+\boxed{s = \varphi(Q) - \varphi(P) = 17 - 0 = 17}
+$$
+
+---
+
+## 验证 (Verifikation)
+
+验证 $\nabla \varphi = f$：
+
+$$
+\frac{\partial \varphi}{\partial x} = 2x + 4xz \quad ✓
+$$
+$$
+\frac{\partial \varphi}{\partial y} = z^2 \quad ✓
+$$
+$$
+\frac{\partial \varphi}{\partial z} = 2x^2 + 2yz + 3z^2 \quad ✓
+$$
+
+---
+
