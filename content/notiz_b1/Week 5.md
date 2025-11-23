@@ -2,6 +2,7 @@
 title: "Week 5"
 slug: week-5
 draft: false
+date: 2025-10-26
 type: notiz_b1
 ---
 
@@ -20,10 +21,12 @@ type: notiz_b1
 - Wofür interessierst du dich? “你对什么感兴趣？”（Ich interessiere mich für Umweltschutz.）
 
 提示：
+
 - 无生命/抽象宾语：wo- + 介词（woran, worauf, womit, worüber, wofür）
 - 有生命（人）：介词 + wem（mit wem, über wen …）
 
 语法 · während + Genitiv（在……期间）
+
 - während des Essens / der Pause / der Ferien（在吃饭/休息/假期期间）
 - Während meines Studiums jobbe ich.（在我学习期间我打工）
 

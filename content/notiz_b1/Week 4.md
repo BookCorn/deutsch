@@ -2,6 +2,7 @@
 title: "Week 4"
 slug: week-4
 draft: false
+date: 2025-10-25
 type: notiz_b1
 ---
 
@@ -16,14 +17,13 @@ type: notiz_b1
 - Es geht ... nicht, funktioniert nichts. 没有...是不行的
 - sich an D. beteiligen / teilnehmen 参加
 - entwerfen (design) 设计
-  
 
 ### Wörter & Sätze
 
 - e Vase, -n 花瓶
-  *Die Vase steht auf der Kommode.*
-  *Meine Mutter stellt die Vase auf die Kommode.*
-- Denk dran, ... zu ... 记得做... 
+  _Die Vase steht auf der Kommode._
+  _Meine Mutter stellt die Vase auf die Kommode._
+- Denk dran, ... zu ... 记得做...
 
 ### 形容词变格
 

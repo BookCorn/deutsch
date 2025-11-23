@@ -2,6 +2,7 @@
 title: "Week 2"
 slug: week-2
 draft: false
+date: 2025-10-24
 type: notiz_b1
 ---
 
