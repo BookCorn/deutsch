@@ -341,7 +341,7 @@ $$
 
 {{</rawhtml>}}
 
-![3.32Abbildung](/static/assets/3.32Abbildung.jpeg)
+![3.32Abbildung](/assets/3.32Abbildung.jpeg)
 
 分别针对以下路径：
 
@@ -368,4 +368,3 @@ $$
 {{</rawhtml>}}
 
 ---
-
