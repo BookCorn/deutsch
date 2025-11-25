@@ -1,7 +1,7 @@
 ---
 title: "例题集2"
 slug: beispiele_2
-date: 2025-11-22
+date: 2025-11-25
 summary: "向量场保守性与曲线积分两题的解答"
 math: true
 type: mathematic
@@ -34,12 +34,12 @@ $$
 
 **解：判断并求势函数，曲线积分与路径无关。**
 
-1. 保守性：$\partial f_1/\partial y = 2x + 2y,\ \partial f_2/\partial x = 2x + 2y$，相等 ⇒ 场保守。
+1. 保守性：$\frac{\partial f_1}{\partial y} = 2x + 2y,\ \frac{\partial f_2}{\partial x} = 2x + 2y$，相等 ⇒ 场保守。
 2. 势函数：
    $$
    \varphi = \int (2xy + y^2)\,dx = x^2 y + x y^2 + C(y)
    $$
-   由 $\partial \varphi/\partial y = x^2 + 2xy + C'(y) = f_2$ 得 $C'(y)=0$，故
+   由 $\frac{\partial \varphi}{\partial y} = x^2 + 2xy + C'(y) = f_2$ 得 $C'(y)=0$，故
    $$
    \boxed{\varphi(x,y)=x^2 y + x y^2 + \text{const}}
    $$
@@ -77,20 +77,20 @@ $$
 
 1. 保守性检查：
    $$
-   \partial f_1/\partial y = 3x^2 = \partial f_2/\partial x,\quad
-   \partial f_1/\partial z = 0 = \partial f_3/\partial x,\quad
-   \partial f_2/\partial z = 4yz = \partial f_3/\partial y
+   \frac{\partial f_1}{\partial y} = 3x^2 = \frac{\partial f_2}{\partial x},\quad
+   \frac{\partial f_1}{\partial z} = 0 = \frac{\partial f_3}{\partial x},\quad
+   \frac{\partial f_2}{\partial z} = 4yz = \frac{\partial f_3}{\partial y}
    $$
    均相等 ⇒ 场保守。
 2. 势函数：
    $$
    \varphi = \int (3x^2 y + 1)\,dx = y x^3 + x + C(y,z)
    $$
-   用 $f_2$：$\partial \varphi/\partial y = x^3 + C_y = x^3 + 2yz^2 \Rightarrow C_y = 2yz^2$
+   用 $f_2$：$\frac{\partial \varphi}{\partial y} = x^3 + C_y = x^3 + 2yz^2 \Rightarrow C_y = 2yz^2$
    $$
    C(y,z) = y^2 z^2 + D(z)
    $$
-   再用 $f_3$：$\partial \varphi/\partial z = 2y^2 z + D'(z) = 2y^2 z + 3z^2 \Rightarrow D'(z)=3z^2$，  
+   再用 $f_3$：$\frac{\partial \varphi}{\partial z} = 2y^2 z + D'(z) = 2y^2 z + 3z^2 \Rightarrow D'(z)=3z^2$，  
    故 $D(z)=z^3 + \text{const}$，于是
    $$
    \boxed{\varphi(x,y,z)=y x^3 + x + y^2 z^2 + z^3 + \text{const}}
