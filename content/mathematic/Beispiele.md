@@ -284,3 +284,88 @@ $$
 $$
 
 ---
+
+
+
+## （i）螺旋线  
+**Die Schraubenlinie**  
+设向量函数：  
+
+{{<rawhtml>}}
+$$
+\mathbf{f}(t) = 
+\begin{pmatrix}
+r \cos t \\
+r \sin t \\
+h \cdot t
+\end{pmatrix},
+\quad \text{其中 } 0 \le t \le 2\pi.
+$$
+
+{{</rawhtml>}}
+
+---
+
+## （ii）函数的图形  
+**Der Graph der Funktion** $\mathbf{f} : [0,1] \to \mathbb{R}$，其中 $\mathbf{f}(x) = \cosh x$。
+
+**提示 1：** 你可以将该图形描述为曲线，若定义参数化曲线 $\mathbf{s} : [0,1] \to \mathbb{R}^2$，其中：  
+
+{{<rawhtml>}}
+$$
+\mathbf{s}(x) = 
+\begin{pmatrix}
+x \\
+f(x)
+\end{pmatrix}.
+$$
+
+{{</rawhtml>}}
+
+**提示 2：** 有恒等式：$\cosh^2 x - \sinh^2 x = 1$。
+
+---
+
+## 3.4.46 练习题（Übung）  
+计算积分 $\int_K \mathbf{f} \cdot d\mathbf{s}$ 的值，其中向量场  
+
+{{<rawhtml>}}
+$$
+\mathbf{f} : \mathbb{R}^2 \to \mathbb{R}^2, \quad
+\mathbf{f}(x,y) = 
+\begin{pmatrix}
+2xy + y^2 \\
+2xy + x^2
+\end{pmatrix}.
+$$
+
+{{</rawhtml>}}
+
+![3.32Abbildung](/static/assets/3.32Abbildung.jpeg)
+
+分别针对以下路径：
+
+**(i)** 由线段 A1 与 A2 组成的曲线（参见图 3.32）；  
+**(ii)** 由线段 B 组成的曲线；  
+**(iii)** 通过求向量场 $\mathbf{f}$ 的势函数 $\varphi$（并任取一条从 $(-1,-1)$ 到 $(1,2)$ 的曲线）。
+
+---
+
+## 3.4.47 练习题（Übung）  
+计算积分 $\int_C \mathbf{f} \cdot d\mathbf{s}$ 的值，其中积分路径 $C$ 从点 $P_1 = (1,0,1)$ 到点 $P_2 = (2,3,2)$，向量场为  
+
+{{<rawhtml>}}
+$$
+\mathbf{f} : \mathbb{R}^3 \to \mathbb{R}^3, \quad
+\mathbf{f}(x,y,z) = 
+\begin{pmatrix}
+3x^2y + 1 \\
+x^3 + 2yz^2 \\
+2y^2z + 3z^2
+\end{pmatrix}.
+$$
+
+{{</rawhtml>}}
+
+---
+
