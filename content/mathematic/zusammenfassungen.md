@@ -634,6 +634,13 @@ $$
 {{</rawhtml>}}
 
 ### 常用积分
+
+$$
+\int r\sqrt{1+r^2}dr =\frac{1}{2}\int \sqrt{1+r^2}d(1+r^2) =\frac{2}{3}\times\frac{1}{2}(1+r^2)^\frac{3}{2}+C=\frac{1}{3}(1+r^2)^\frac{3}{2}+C
+$$
+
+
+
 {{<rawhtml>}}
 $$
 \int \sin x \, dx = -\cos x + C

@@ -37,7 +37,7 @@ $$
 1. 保守性：$\frac{\partial f_1}{\partial y} = 2x + 2y,\ \frac{\partial f_2}{\partial x} = 2x + 2y$，相等 ⇒ 场保守。
 2. 势函数：
    $$
-   \varphi = \int (2xy + y^2)\,dx = x^2 y + x y^2 + C(y)
+   \varphi = \int (2xy + y^2)\dx = x^2 y + x y^2 + C(y)
    $$
    由 $\frac{\partial \varphi}{\partial y} = x^2 + 2xy + C'(y) = f_2$ 得 $C'(y)=0$，故
    $$
