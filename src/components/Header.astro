@@ -1,0 +1,29 @@
+---
+import { SECTIONS } from '../sections';
+const { active } = Astro.props as { active?: string };
+---
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Notizen<span class="zh">学习笔记</span></a>
+    <nav class="top">
+      {SECTIONS.map((s) => (
+        <a href={`/${s.key}/`} aria-current={active === s.key ? 'true' : undefined}>{s.nav}</a>
+      ))}
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅色">☾</button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const sync = () => {
+    if (btn) btn.textContent = root.classList.contains('dark') ? '☀' : '☾';
+  };
+  sync();
+  btn?.addEventListener('click', () => {
+    const dark = root.classList.toggle('dark');
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
+    sync();
+  });
+</script>

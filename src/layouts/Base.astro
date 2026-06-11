@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+  math?: boolean;
+  mermaid?: boolean;
+}
+const { title, description = '德语语法 · 课堂随记 · 数学分析学习笔记', active, math, mermaid } = Astro.props;
+const fullTitle = title === 'Notizen' ? 'Notizen · 学习笔记' : `${title} · Notizen`;
+---
+<!DOCTYPE html>
+<html lang="zh" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Serif+SC:wght@400;500;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  {math && (
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  )}
+
+  <script is:inline>
+    (() => {
+      try {
+        const t = localStorage.getItem('theme');
+        const d = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', d);
+        document.documentElement.classList.toggle('light', !d);
+      } catch {}
+    })();
+  </script>
+</head>
+<body>
+  <Header active={active} />
+  <main class="wrap">
+    <slot />
+  </main>
+  <Footer />
+
+  {mermaid && (
+    <script is:inline type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      const dark = document.documentElement.classList.contains('dark');
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: dark ? 'dark' : 'default', fontFamily: 'inherit' });
+      document.querySelectorAll('code.language-mermaid').forEach((code) => {
+        const pre = code.closest('pre') || code;
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+        pre.replaceWith(div);
+      });
+      await mermaid.run({ querySelector: '.mermaid' });
+    </script>
+  )}
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notizen — v0 note page</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Serif+SC:wght@400;500;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+<style>
+:root{
+  --paper:#faf9f5; --raised:#f2f0e8; --raised-2:#ffffff;
+  --ink:#141413; --ink-soft:#3d3d3a; --ink-faint:#73726c;
+  --accent:#D97757; --accent-link:#a94f2d; --code-red:#8a2424;
+  --rule:rgba(31,30,29,.14); --rule-strong:rgba(31,30,29,.24);
+  --callout-shadow:0 14px 40px -28px rgb(31 30 29/.30);
+  --font-head:"Playfair Display","Noto Serif SC",Georgia,serif;
+  --font-body:"Newsreader","Noto Serif SC",Georgia,serif;
+  --font-mono:"Spline Sans Mono",ui-monospace,monospace;
+  --col:46rem;
+}
+html.dark{
+  --paper:#262624; --raised:#30302e; --raised-2:#2c2c2a;
+  --ink:#faf9f5; --ink-soft:#c2c0b6; --ink-faint:#9a9c92;
+  --accent:#D97757; --accent-link:#e09175; --code-red:#f4a9a9;
+  --rule:rgba(222,220,209,.15); --rule-strong:rgba(222,220,209,.26);
+  --callout-shadow:0 14px 40px -26px rgb(0 0 0/.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-body); font-size:18px; line-height:1.65;
+  font-weight:400; -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  transition:background .3s ease,color .3s ease;
+}
+.wrap{max-width:var(--col); margin:0 auto; padding:0 1.5rem}
+
+/* ---- header ---- */
+.site-header{
+  border-bottom:1px solid var(--rule);
+  margin-bottom:3.5rem;
+}
+.site-header .wrap{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1rem; padding-top:1.6rem; padding-bottom:1.4rem; flex-wrap:wrap;
+}
+.brand{
+  font-family:var(--font-head); font-weight:800; font-size:1.5rem;
+  letter-spacing:-.01em; text-decoration:none; color:var(--ink);
+}
+.brand .zh{font-family:var(--font-head);font-weight:700;font-size:.9em;color:var(--ink-soft);margin-left:.5rem}
+nav.top{display:flex; align-items:center; gap:1.4rem; font-family:var(--font-mono); font-size:.78rem}
+nav.top a{
+  color:var(--ink-soft); text-decoration:none; padding-bottom:2px;
+  border-bottom:1.5px solid transparent; transition:color .15s,border-color .15s;
+}
+nav.top a:hover,nav.top a.active{color:var(--ink); border-color:var(--accent)}
+.toggle{
+  font-family:var(--font-mono); font-size:.74rem; cursor:pointer;
+  background:none; border:1px solid var(--rule-strong); color:var(--ink-soft);
+  padding:.25rem .6rem; border-radius:6px; transition:all .15s;
+}
+.toggle:hover{color:var(--ink); border-color:var(--accent)}
+
+/* ---- article head ---- */
+.breadcrumb{
+  font-family:var(--font-mono); font-size:.76rem; color:var(--ink-faint);
+  margin-bottom:1.6rem; display:flex; gap:.4rem; flex-wrap:wrap;
+}
+.breadcrumb a{color:var(--ink-faint); text-decoration:none}
+.breadcrumb a:hover{color:var(--accent-link)}
+.breadcrumb .sep{opacity:.5}
+.kicker{
+  font-family:var(--font-mono); font-size:.74rem; font-weight:500;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:.9rem;
+}
+h1.title{
+  font-family:var(--font-head); font-weight:800; font-size:2.7rem;
+  line-height:1.12; letter-spacing:-.015em; margin:0 0 .7rem;
+  text-wrap:balance;
+}
+.summary{
+  font-family:var(--font-body); font-style:italic; font-size:1.18rem;
+  color:var(--ink-soft); margin:0 0 1.2rem; text-wrap:pretty;
+}
+.meta{
+  font-family:var(--font-mono); font-size:.76rem; color:var(--ink-faint);
+  display:flex; gap:.5rem; align-items:center;
+  padding-bottom:1.8rem; border-bottom:1px solid var(--rule); margin-bottom:2.5rem;
+}
+.meta .dot{opacity:.5}
+
+/* ---- prose ---- */
+.prose{padding-bottom:5rem}
+.prose h2{
+  font-family:var(--font-head); font-weight:700; font-size:1.6rem;
+  letter-spacing:-.01em; margin:2.8rem 0 1rem; line-height:1.25;
+  padding-top:.4rem;
+}
+.prose h3{
+  font-family:var(--font-head); font-weight:600; font-size:1.22rem;
+  margin:2rem 0 .7rem; color:var(--ink);
+}
+.prose p{margin:1rem 0; text-wrap:pretty}
+.prose a{color:var(--accent-link); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+.prose a:hover{text-decoration-thickness:2px}
+.prose strong{font-weight:600}
+.prose u{text-decoration-color:var(--accent); text-underline-offset:3px}
+.prose hr{border:none; height:1px; background:var(--rule); margin:2.6rem 0}
+
+/* DE example + ZH gloss pattern */
+.prose ul,.prose ol{padding-left:1.4rem; margin:1rem 0}
+.prose li{margin:.5rem 0}
+.gloss{color:var(--ink-soft); font-size:.95em}
+.de{font-weight:600}
+
+/* inline + block code */
+.prose code{
+  font-family:var(--font-mono); font-size:.85em; color:var(--code-red);
+  background:var(--raised); padding:.12em .35em; border-radius:4px;
+}
+.prose pre{
+  background:var(--raised-2); border:1px solid var(--rule);
+  border-radius:10px; padding:1.2rem 1.4rem; overflow-x:auto;
+  margin:2rem 0; line-height:1.5;
+}
+.prose pre code{background:none; color:var(--ink); padding:0; font-size:.84em}
+
+/* blockquote / callout */
+blockquote{
+  margin:1.8rem 0; padding:1rem 1.3rem; background:var(--raised);
+  border-left:3px solid var(--accent); border-radius:0 8px 8px 0;
+  box-shadow:var(--callout-shadow); color:var(--ink-soft);
+}
+blockquote p{margin:.3rem 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+/* table */
+.table-wrap{overflow-x:auto; margin:2rem 0}
+table{
+  border-collapse:collapse; width:100%; font-size:.94rem;
+  border:1px solid var(--rule); border-radius:8px; overflow:hidden;
+}
+th,td{padding:.6rem .85rem; text-align:left; border-bottom:1px solid var(--rule)}
+th{background:var(--raised); font-family:var(--font-head); font-weight:600; font-size:.92rem}
+tbody tr:last-child td{border-bottom:none}
+td .de{color:var(--ink)}
+
+/* math */
+.katex-display{margin:1.8rem 0; overflow-x:auto; overflow-y:hidden}
+.katex{font-size:1.04em}
+
+/* footer */
+.site-footer{
+  border-top:1px solid var(--rule); padding:2rem 0 3rem;
+  font-family:var(--font-mono); font-size:.74rem; color:var(--ink-faint);
+  text-align:center;
+}
+.site-footer a{color:var(--ink-faint); text-decoration:none}
+.site-footer a:hover{color:var(--accent-link)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:560px){
+  h1.title{font-size:2.1rem}
+  body{font-size:17px}
+  nav.top{gap:1rem; font-size:.72rem}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#">Notizen<span class="zh">学习笔记</span></a>
+    <nav class="top">
+      <a href="#" class="active">语法</a>
+      <a href="#">Notiz B1</a>
+      <a href="#">Notiz B2</a>
+      <a href="#">数学</a>
+      <button class="toggle" id="tg" aria-label="切换深浅色">☾ dark</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="breadcrumb">
+    <a href="#">语法</a><span class="sep">/</span>
+    <a href="#">Passiv</a><span class="sep">/</span>
+    <span>被动句</span>
+  </div>
+
+  <p class="kicker">Grammatik · 语法</p>
+  <h1 class="title">Passiv — 被动句</h1>
+  <p class="summary">过程被动态 Vorgangspassiv 与状态被动态 Zustandspassiv 的构成、格的转换，以及 von / durch 的施事区分。</p>
+  <div class="meta">
+    <span>Grammatik</span><span class="dot">·</span>
+    <span>aktualisiert 2026-06-11</span><span class="dot">·</span>
+    <span>6 min</span>
+  </div>
+
+  <article class="prose">
+    <h2>Vorgangspassiv 过程被动态</h2>
+    <p>绝大多数及物动词皆可构成被动态。<strong>werden</strong> 与主动句中的动词构成被动句，werden 由主语和时态决定变位，原动词变成第二分词 (Partizip II) 放在句末。</p>
+    <p>有且仅有及 <strong>Akkusativ</strong> 物的成分可改成被动句中的 <strong>Nominativ</strong> 主语，否则用 <code>es</code> 或其他成分占第一位。</p>
+
+    <ul>
+      <li><span class="de">Die Ärztin untersucht den Patienten.</span><br><span class="gloss">→ Der Patient wird <u>von</u> der Ärztin untersucht. 病人被医生检查。</span></li>
+      <li><span class="de">Er holt jeden Tag mich ab.</span><br><span class="gloss">→ Ich werde jeden Tag <u>von</u> ihm abgeholt. 我每天被他接。</span></li>
+    </ul>
+
+    <blockquote>
+      <p>💡 <strong>von</strong> 接施事者（人/有意识的主体）；<strong>durch</strong> 接手段或中介（无意识的原因）。</p>
+    </blockquote>
+
+    <h3>时态对照表</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Zeitform 时态</th><th>Aktiv 主动</th><th>Passiv 被动</th></tr></thead>
+        <tbody>
+          <tr><td>Präsens</td><td class="de">fragt</td><td class="de">wird gefragt</td></tr>
+          <tr><td>Präteritum</td><td class="de">fragte</td><td class="de">wurde gefragt</td></tr>
+          <tr><td>Perfekt</td><td class="de">hat gefragt</td><td class="de">ist gefragt worden</td></tr>
+          <tr><td>Futur I</td><td class="de">wird fragen</td><td class="de">wird gefragt werden</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr>
+
+    <h2>数学也用同一套样式</h2>
+    <p>保守场 (konservatives Vektorfeld) 当且仅当存在势函数 $\varphi$ 使得 $\vec f = \nabla\varphi$。判定准则：</p>
+    $$\operatorname{rot}\vec f = \nabla \times \vec f = \vec 0 \quad\Longleftrightarrow\quad \oint_C \vec f \cdot \mathrm d\vec r = 0$$
+    <p>内联公式如 $\int_a^b f(x)\,\mathrm dx$ 与正文衬线对齐，行间公式自动居中。</p>
+
+    <h3>代码块</h3>
+    <pre><code>fn passiv(verb: &str) -> String {
+    format!("wird {verb}")
+}</code></pre>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Notizen · 学习笔记</span> &nbsp;·&nbsp;
+    <a href="#">rechtan.com</a> &nbsp;·&nbsp;
+    <span>built with Astro</span>
+  </div>
+</footer>
+
+<script>
+const tg=document.getElementById('tg');
+const root=document.documentElement;
+if(matchMedia('(prefers-color-scheme:dark)').matches){root.className='dark';}
+function sync(){const d=root.classList.contains('dark');tg.textContent=d?'☀ light':'☾ dark';}
+sync();
+tg.addEventListener('click',()=>{root.classList.toggle('dark');root.classList.toggle('light');sync();});
+</script>
+</body>
+</html>

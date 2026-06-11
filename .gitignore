@@ -1,10 +1,13 @@
-# Hugo build output
-/public/
-/resources/_gen/
+# Astro build output
+/dist/
+.astro/
 
-# Local Hugo caches
-.hugo_build.lock
-
-# Node/yarn caches if theme uses them
+# dependencies
 node_modules/
+
+# misc
 .DS_Store
+*.log
+
+# local logs & agent caches
+/logs/

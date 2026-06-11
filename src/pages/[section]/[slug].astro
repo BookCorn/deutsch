@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Note from '../../layouts/Note.astro';
+import type { SectionKey } from '../../sections';
+
+export const getStaticPaths = (async () => {
+  const notes = await getCollection('notes', ({ data }) => !data.draft);
+  return notes.map((note) => ({
+    params: { section: note.data.section, slug: note.data.slug },
+    props: { note },
+  }));
+}) satisfies GetStaticPaths;
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+// reading time: count CJK chars + latin words
+const text = note.body ?? '';
+const cjk = (text.match(/[一-鿿]/g) || []).length;
+const words = (text.replace(/[一-鿿]/g, ' ').match(/\b\w+\b/g) || []).length;
+const minutes = Math.max(1, Math.round((cjk / 400) + (words / 220)));
+const hasMermaid = text.includes('```mermaid');
+---
+<Note
+  title={note.data.title}
+  summary={note.data.summary}
+  date={note.data.date}
+  section={note.data.section as SectionKey}
+  math={note.data.math}
+  mermaid={hasMermaid}
+  minutes={minutes}
+>
+  <Content />
+</Note>

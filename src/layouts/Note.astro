@@ -1,0 +1,40 @@
+---
+import Base from './Base.astro';
+import { SECTION_MAP, type SectionKey } from '../sections';
+
+interface Props {
+  title: string;
+  summary?: string;
+  date?: Date;
+  section: SectionKey;
+  math?: boolean;
+  mermaid?: boolean;
+  minutes?: number;
+}
+const { title, summary, date, section, math, mermaid, minutes } = Astro.props;
+const sec = SECTION_MAP[section];
+const dateStr = date
+  ? new Intl.DateTimeFormat('sv-SE').format(date) // YYYY-MM-DD
+  : undefined;
+---
+<Base title={title} description={summary} active={section} math={math} mermaid={mermaid}>
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="/">学习笔记</a><span class="sep">/</span>
+    <a href={`/${section}/`}>{sec.nav}</a><span class="sep">/</span>
+    <span>{title}</span>
+  </nav>
+
+  <p class="kicker">{sec.kicker}</p>
+  <h1 class="title">{title}</h1>
+  {summary && <p class="summary">{summary}</p>}
+
+  <div class="meta">
+    <span>{sec.nav}</span>
+    {dateStr && <><span class="dot">·</span><span>{dateStr}</span></>}
+    {minutes && <><span class="dot">·</span><span>{minutes} min</span></>}
+  </div>
+
+  <article class="prose">
+    <slot />
+  </article>
+</Base>

@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { SECTIONS } from '../sections';
+
+const notes = await getCollection('notes', ({ data }) => !data.draft);
+const countOf = (key: string) => notes.filter((n) => n.data.section === key).length;
+---
+<Base title="Notizen">
+  <p class="kicker" style="color:var(--accent)">Deutsch · Mathematik</p>
+  <h1 class="page-title">学习笔记</h1>
+  <p class="page-intro">
+    德语语法、课堂随记与数学分析的个人笔记。正文 Newsreader + 思源宋体，公式 KaTeX，深浅双色。
+  </p>
+
+  <div class="section-grid">
+    {SECTIONS.map((s) => (
+      <a class="section-card" href={`/${s.key}/`}>
+        <span class="tag">{s.kicker} · {countOf(s.key)} 篇</span>
+        <h2>{s.nav}</h2>
+        <p>{s.intro}</p>
+      </a>
+    ))}
+  </div>
+</Base>

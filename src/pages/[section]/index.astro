@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { SECTIONS, SECTION_MAP, type SectionKey } from '../../sections';
+
+export const getStaticPaths = (() => {
+  return SECTIONS.map((s) => ({ params: { section: s.key } }));
+}) satisfies GetStaticPaths;
+
+const { section } = Astro.params as { section: SectionKey };
+const meta = SECTION_MAP[section];
+
+const notes = await getCollection(
+  'notes',
+  ({ data }) => data.section === section && !data.draft
+);
+
+notes.sort((a, b) => {
+  if (meta.order === 'weight') return a.data.weight - b.data.weight;
+  const da = a.data.date?.getTime() ?? 0;
+  const db = b.data.date?.getTime() ?? 0;
+  return db - da;
+});
+
+const fmt = (d?: Date) => (d ? new Intl.DateTimeFormat('sv-SE').format(d) : '');
+---
+<Base title={meta.nav} description={meta.intro} active={section}>
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="/">学习笔记</a><span class="sep">/</span><span>{meta.nav}</span>
+  </nav>
+  <p class="kicker">{meta.kicker}</p>
+  <h1 class="page-title">{meta.title}</h1>
+  <p class="page-intro">{meta.intro}</p>
+
+  <ul class="post-list">
+    {notes.map((n) => (
+      <li class="post-item">
+        <a href={`/${section}/${n.data.slug}/`}>
+          {n.data.title}
+          {n.data.summary && <p class="item-summary">{n.data.summary}</p>}
+        </a>
+        {n.data.date && <span class="date">{fmt(n.data.date)}</span>}
+      </li>
+    ))}
+  </ul>
+</Base>

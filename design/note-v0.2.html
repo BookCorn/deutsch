@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh" class="light" data-accent="petrol" data-head="playfair" data-han="song">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notizen — v0.2</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Spectral:ital,wght@0,500;0,600;0,700;1,500&family=Libre+Caslon+Display&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Serif+SC:wght@400;500;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+
+<style>
+:root{
+  /* paper / ink shared */
+  --paper:#f6f4ee; --raised:#eeeae0; --raised-2:#fbfaf6;
+  --ink:#1b1a17; --ink-soft:#46443d; --ink-faint:#76736a;
+  --code-red:#8a2424;
+  --rule:rgba(27,26,23,.13); --rule-strong:rgba(27,26,23,.24);
+  --callout-shadow:0 14px 40px -28px rgb(27 26 23/.30);
+  /* heading + han fonts (swapped by data attrs) */
+  --head-face:"Playfair Display";
+  --han-face:"Noto Serif SC";
+  --head-weight:800;
+  --font-head:var(--head-face),var(--han-face),Georgia,serif;
+  --font-body:"Newsreader",var(--han-face),Georgia,serif;
+  --font-mono:"Spline Sans Mono",ui-monospace,monospace;
+  --col:46rem;
+  /* accent default = petrol */
+  --accent:#2f6066; --accent-link:#234c51;
+}
+/* ---- accent palettes ---- */
+html[data-accent="petrol"]{--accent:#2f6066;--accent-link:#234c51}
+html[data-accent="pine"]  {--accent:#4f6b4a;--accent-link:#3b5236}
+html[data-accent="wine"]  {--accent:#8f3f43;--accent-link:#743236}
+html[data-accent="terra"] {--accent:#c25a37;--accent-link:#a04524}
+/* ---- heading face ---- */
+html[data-head="playfair"]{--head-face:"Playfair Display";--head-weight:800}
+html[data-head="spectral"]{--head-face:"Spectral";--head-weight:700}
+html[data-head="caslon"]  {--head-face:"Libre Caslon Display";--head-weight:400}
+/* ---- han face ---- */
+html[data-han="song"]{--han-face:"Noto Serif SC"}
+html[data-han="kai"] {--han-face:"LXGW WenKai Screen"}
+
+/* ---- dark ---- */
+html.dark{
+  --paper:#23231f; --raised:#2c2c27; --raised-2:#29292400;
+  --ink:#f4f2ea; --ink-soft:#c4c1b6; --ink-faint:#928f84;
+  --code-red:#f0a9a9;
+  --rule:rgba(226,222,210,.14); --rule-strong:rgba(226,222,210,.26);
+  --callout-shadow:0 14px 40px -26px rgb(0 0 0/.5);
+}
+html.dark[data-accent="petrol"]{--accent:#5f9ba2;--accent-link:#83b8bd}
+html.dark[data-accent="pine"]  {--accent:#7fa377;--accent-link:#9ab894}
+html.dark[data-accent="wine"]  {--accent:#c87a7e;--accent-link:#d79a9d}
+html.dark[data-accent="terra"] {--accent:#d97757;--accent-link:#e6997e}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-body); font-size:18px; line-height:1.65; font-weight:400;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background .3s ease,color .3s ease;
+}
+.wrap{max-width:var(--col); margin:0 auto; padding:0 1.5rem}
+
+.site-header{border-bottom:1px solid var(--rule); margin-bottom:3.5rem}
+.site-header .wrap{display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding:1.6rem 1.5rem 1.4rem; flex-wrap:wrap}
+.brand{font-family:var(--font-head); font-weight:var(--head-weight); font-size:1.5rem; letter-spacing:-.01em; text-decoration:none; color:var(--ink)}
+.brand .zh{font-family:var(--font-head);font-weight:500;font-size:.86em;color:var(--ink-soft);margin-left:.5rem}
+nav.top{display:flex; align-items:center; gap:1.4rem; font-family:var(--font-mono); font-size:.78rem}
+nav.top a{color:var(--ink-soft); text-decoration:none; padding-bottom:2px; border-bottom:1.5px solid transparent; transition:color .15s,border-color .15s}
+nav.top a:hover,nav.top a.active{color:var(--ink); border-color:var(--accent)}
+
+.breadcrumb{font-family:var(--font-mono); font-size:.76rem; color:var(--ink-faint); margin-bottom:1.6rem; display:flex; gap:.4rem; flex-wrap:wrap}
+.breadcrumb a{color:var(--ink-faint); text-decoration:none}
+.breadcrumb a:hover{color:var(--accent-link)}
+.breadcrumb .sep{opacity:.5}
+.kicker{font-family:var(--font-mono); font-size:.74rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:.9rem}
+h1.title{font-family:var(--font-head); font-weight:var(--head-weight); font-size:2.7rem; line-height:1.12; letter-spacing:-.015em; margin:0 0 .7rem; text-wrap:balance}
+.summary{font-family:var(--font-body); font-style:italic; font-size:1.18rem; color:var(--ink-soft); margin:0 0 1.2rem; text-wrap:pretty}
+.meta{font-family:var(--font-mono); font-size:.76rem; color:var(--ink-faint); display:flex; gap:.5rem; align-items:center; padding-bottom:1.8rem; border-bottom:1px solid var(--rule); margin-bottom:2.5rem}
+.meta .dot{opacity:.5}
+
+.prose{padding-bottom:5rem}
+.prose h2{font-family:var(--font-head); font-weight:var(--head-weight); font-size:1.6rem; letter-spacing:-.01em; margin:2.8rem 0 1rem; line-height:1.25}
+.prose h3{font-family:var(--font-head); font-weight:600; font-size:1.22rem; margin:2rem 0 .7rem; color:var(--ink)}
+.prose p{margin:1rem 0; text-wrap:pretty}
+.prose a{color:var(--accent-link); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+.prose a:hover{text-decoration-thickness:2px}
+.prose strong{font-weight:600}
+.prose u{text-decoration-color:var(--accent); text-underline-offset:3px; text-decoration-thickness:2px}
+.prose hr{border:none; height:1px; background:var(--rule); margin:2.6rem 0}
+.prose ul,.prose ol{padding-left:1.4rem; margin:1rem 0}
+.prose li{margin:.5rem 0}
+.gloss{color:var(--ink-soft); font-size:.95em}
+.de{font-weight:600}
+.prose code{font-family:var(--font-mono); font-size:.85em; color:var(--code-red); background:var(--raised); padding:.12em .35em; border-radius:4px}
+.prose pre{background:var(--raised-2); border:1px solid var(--rule); border-radius:10px; padding:1.2rem 1.4rem; overflow-x:auto; margin:2rem 0; line-height:1.5}
+.prose pre code{background:none; color:var(--ink); padding:0; font-size:.84em}
+blockquote{margin:1.8rem 0; padding:1rem 1.3rem; background:var(--raised); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; box-shadow:var(--callout-shadow); color:var(--ink-soft)}
+blockquote p{margin:.3rem 0}
+blockquote p:first-child{margin-top:0}blockquote p:last-child{margin-bottom:0}
+.table-wrap{overflow-x:auto; margin:2rem 0}
+table{border-collapse:collapse; width:100%; font-size:.94rem; border:1px solid var(--rule); border-radius:8px; overflow:hidden}
+th,td{padding:.6rem .85rem; text-align:left; border-bottom:1px solid var(--rule)}
+th{background:var(--raised); font-family:var(--font-head); font-weight:600; font-size:.92rem}
+tbody tr:last-child td{border-bottom:none}
+td .de{color:var(--ink)}
+.katex-display{margin:1.8rem 0; overflow-x:auto; overflow-y:hidden}
+.katex{font-size:1.04em}
+.site-footer{border-top:1px solid var(--rule); padding:2rem 0 3rem; font-family:var(--font-mono); font-size:.74rem; color:var(--ink-faint); text-align:center}
+.site-footer a{color:var(--ink-faint); text-decoration:none}
+.site-footer a:hover{color:var(--accent-link)}
+
+/* ---- Tweaks panel ---- */
+.tweaks{position:fixed; right:1.1rem; bottom:1.1rem; z-index:50; font-family:var(--font-mono)}
+.tweaks-btn{background:var(--ink); color:var(--paper); border:none; border-radius:8px; padding:.5rem .8rem; font-family:var(--font-mono); font-size:.74rem; cursor:pointer; box-shadow:0 6px 20px -8px rgb(0 0 0/.4)}
+.tweaks-body{display:none; position:absolute; right:0; bottom:2.8rem; width:230px; background:var(--raised-2,var(--paper)); background:var(--paper); border:1px solid var(--rule-strong); border-radius:12px; padding:1rem; box-shadow:0 24px 60px -24px rgb(0 0 0/.4)}
+.tweaks.open .tweaks-body{display:block}
+.tweaks-body h4{margin:0 0 .8rem; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); font-weight:500}
+.tw-row{margin-bottom:.85rem}
+.tw-row label{display:block; font-size:.68rem; color:var(--ink-faint); margin-bottom:.3rem; text-transform:uppercase; letter-spacing:.08em}
+.tw-row select{width:100%; font-family:var(--font-mono); font-size:.78rem; padding:.35rem .5rem; border:1px solid var(--rule-strong); border-radius:6px; background:var(--paper); color:var(--ink)}
+.tw-seg{display:flex; gap:.3rem}
+.tw-seg button{flex:1; font-family:var(--font-mono); font-size:.74rem; padding:.35rem; border:1px solid var(--rule-strong); border-radius:6px; background:var(--paper); color:var(--ink-soft); cursor:pointer}
+.tw-seg button.on{background:var(--accent); color:#fff; border-color:var(--accent)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:560px){h1.title{font-size:2.1rem}body{font-size:17px}nav.top{gap:1rem;font-size:.72rem}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#">Notizen<span class="zh">学习笔记</span></a>
+    <nav class="top">
+      <a href="#" class="active">语法</a>
+      <a href="#">Notiz B1</a>
+      <a href="#">Notiz B2</a>
+      <a href="#">数学</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="breadcrumb"><a href="#">语法</a><span class="sep">/</span><a href="#">Passiv</a><span class="sep">/</span><span>被动句</span></div>
+  <p class="kicker">Grammatik · 语法</p>
+  <h1 class="title">Passiv — 被动句</h1>
+  <p class="summary">过程被动态 Vorgangspassiv 与状态被动态 Zustandspassiv 的构成、格的转换，以及 von / durch 的施事区分。</p>
+  <div class="meta"><span>Grammatik</span><span class="dot">·</span><span>aktualisiert 2026-06-11</span><span class="dot">·</span><span>6 min</span></div>
+
+  <article class="prose">
+    <h2>Vorgangspassiv 过程被动态</h2>
+    <p>绝大多数及物动词皆可构成被动态。<strong>werden</strong> 与主动句中的动词构成被动句，werden 由主语和时态决定变位，原动词变成第二分词 (Partizip II) 放在句末。</p>
+    <p>有且仅有及 <strong>Akkusativ</strong> 物的成分可改成被动句中的 <strong>Nominativ</strong> 主语，否则用 <code>es</code> 或其他成分占第一位。</p>
+    <ul>
+      <li><span class="de">Die Ärztin untersucht den Patienten.</span><br><span class="gloss">→ Der Patient wird <u>von</u> der Ärztin untersucht. 病人被医生检查。</span></li>
+      <li><span class="de">Er holt jeden Tag mich ab.</span><br><span class="gloss">→ Ich werde jeden Tag <u>von</u> ihm abgeholt. 我每天被他接。</span></li>
+    </ul>
+    <blockquote><p>💡 <strong>von</strong> 接施事者（人/有意识的主体）；<strong>durch</strong> 接手段或中介（无意识的原因）。</p></blockquote>
+
+    <h3>时态对照表</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Zeitform 时态</th><th>Aktiv 主动</th><th>Passiv 被动</th></tr></thead>
+      <tbody>
+        <tr><td>Präsens</td><td class="de">fragt</td><td class="de">wird gefragt</td></tr>
+        <tr><td>Präteritum</td><td class="de">fragte</td><td class="de">wurde gefragt</td></tr>
+        <tr><td>Perfekt</td><td class="de">hat gefragt</td><td class="de">ist gefragt worden</td></tr>
+        <tr><td>Futur I</td><td class="de">wird fragen</td><td class="de">wird gefragt werden</td></tr>
+      </tbody>
+    </table></div>
+
+    <hr>
+    <h2>数学也用同一套样式</h2>
+    <p>保守场 (konservatives Vektorfeld) 当且仅当存在势函数 $\varphi$ 使得 $\vec f = \nabla\varphi$。判定准则：</p>
+    $$\operatorname{rot}\vec f = \nabla \times \vec f = \vec 0 \quad\Longleftrightarrow\quad \oint_C \vec f \cdot \mathrm d\vec r = 0$$
+    <p>内联公式如 $\int_a^b f(x)\,\mathrm dx$ 与正文衬线对齐，行间公式自动居中。</p>
+    <h3>代码块</h3>
+    <pre><code>fn passiv(verb: &str) -> String {
+    format!("wird {verb}")
+}</code></pre>
+  </article>
+</main>
+
+<footer class="site-footer"><div class="wrap"><span>Notizen · 学习笔记</span> &nbsp;·&nbsp; <a href="#">rechtan.com</a> &nbsp;·&nbsp; <span>built with Astro</span></div></footer>
+
+<div class="tweaks" id="tweaks">
+  <button class="tweaks-btn" id="twBtn">Tweaks</button>
+  <div class="tweaks-body">
+    <h4>外观调参</h4>
+    <div class="tw-row"><label>主题</label><div class="tw-seg" data-k="theme"><button data-v="light" class="on">浅</button><button data-v="dark">深</button></div></div>
+    <div class="tw-row"><label>强调色</label><select data-k="accent">
+      <option value="petrol">Petrol 蓝绿</option><option value="pine">Pine 松绿</option>
+      <option value="wine">Wine 酒红</option><option value="terra">Terracotta 陶</option></select></div>
+    <div class="tw-row"><label>标题字体</label><select data-k="head">
+      <option value="playfair">Playfair Display</option><option value="spectral">Spectral</option>
+      <option value="caslon">Libre Caslon Display</option></select></div>
+    <div class="tw-row"><label>中文字体</label><select data-k="han">
+      <option value="song">思源宋体 Noto Serif SC</option><option value="kai">霞鹜文楷 LXGW WenKai</option></select></div>
+  </div>
+</div>
+
+<script>
+const root=document.documentElement, tw=document.getElementById('tweaks');
+document.getElementById('twBtn').onclick=()=>tw.classList.toggle('open');
+if(matchMedia('(prefers-color-scheme:dark)').matches){
+  root.classList.remove('light');root.classList.add('dark');
+  tw.querySelectorAll('[data-k="theme"] button').forEach(b=>b.classList.toggle('on',b.dataset.v==='dark'));
+}
+tw.querySelectorAll('select').forEach(s=>s.onchange=()=>root.setAttribute('data-'+s.dataset.k,s.value));
+tw.querySelectorAll('[data-k="theme"] button').forEach(b=>b.onclick=()=>{
+  root.classList.toggle('dark',b.dataset.v==='dark');root.classList.toggle('light',b.dataset.v==='light');
+  b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+});
+</script>
+</body>
+</html>
